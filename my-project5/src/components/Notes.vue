@@ -19,6 +19,7 @@
     import {mapGetters} from 'vuex';
     import Header from "./header";
     export default {
+
         name: "Notes",
         components: {Header},
         computed:{

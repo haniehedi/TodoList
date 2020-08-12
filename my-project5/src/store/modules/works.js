@@ -7,10 +7,11 @@ const state={
     lastId: 0
 }
 const mutations ={
-    ['ADD_NOTE']: (state)=>{
+    ['ADD_NOTE']: (state, myynote)=>{
         state.notes.push({
-            note: state.myynote
+            note: myynote
         })
+        //state.notes = state.notes.concat(myynote)
     },
     ['ADD_WORK']: (state, work) => {
         const workWithId = [work].map(w => {
