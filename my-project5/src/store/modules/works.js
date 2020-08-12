@@ -10,6 +10,7 @@ const mutations ={
     ['ADD_NOTE']: (state, myynote)=>{
         state.notes.push({
             note: myynote
+
         })
         //state.notes = state.notes.concat(myynote)
     },
