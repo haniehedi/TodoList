@@ -253,8 +253,7 @@ export default {
         start: null,
         done: false,
         elapsedTime: 0,
-        startCounter: 0,
-        modal: false,
+        startCounter: 0
         //
       });
       this.mywork = "";
