@@ -27,7 +27,7 @@
               <small class="pull-center">
                 <span class="glyphicon glyphicon-time"></span>
                 ورود به برنامه :{{this.ago}}
-              </small>
+                </small>
             </a>
           </div>
         </div>
@@ -54,18 +54,13 @@
             <thead>
               <tr>
                 <th style="color:indianred">کار انجام نشده</th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
+                <th></th><th></th>
+                <th></th><th></th>
+                <th></th><th></th>
+                <th></th><th></th>
+                <th></th><th></th>
+                <th></th><th></th>
+               
               </tr>
             </thead>
             <tbody v-for="(work) in formattedWorks" :key="work.id">
@@ -75,80 +70,79 @@
                     type="checkbox"
                     class="glyphicon glyphicon-unchecked"
                     id="check1"
-                    v-model="work.done"
-                    @change="tasks"
+                     v-model="work.done" 
+                      @change="tasks"
                   />
-                  <span style="margin-right:1.5em">{{work.work}}</span>
+                  <span style="margin-right:1.5em">{{work.work}}</span>                 
                 </td>
-
+                
                 <td></td>
                 <td v-if="work && work.elapsedTime">
                   <big
-                    v-if="(work.elapsedTime - work.runtime) >=0"
-                  >{{ (new Date(work.elapsedTime - work.runtime)).toUTCString().match(/(\d\d:\d\d:\d\d)/)[0]}}</big>
-                  <big
-                    v-if="(work.elapsedTime - work.runtime) <0"
-                  >{{ (new Date(0)).toUTCString().match(/(\d\d:\d\d:\d\d)/)[0]}}</big>
+                   v-if="(work.elapsedTime - work.runtime) >=0"
+                   >{{ (new Date(work.elapsedTime - work.runtime)).toUTCString().match(/(\d\d:\d\d:\d\d)/)[0]}}</big>
+                  <big 
+                     v-if="(work.elapsedTime - work.runtime) <0"
+                     >{{ (new Date(0)).toUTCString().match(/(\d\d:\d\d:\d\d)/)[0]}}</big>
                   <br />
                   <small>{{ (new Date(work.elapsedTime)).toUTCString().match(/(\d\d:\d\d:\d\d)/)[0]}}</small>
                 </td>
                 <td v-else></td>
                 <td>
                   <div class="pull-left">
-                    <div class="btn-group" role="group" aria-label="...">
-                      <button
-                        v-if="work.start == null"
-                        type="button"
-                        class="btn btn-link"
-                        @click.stop="(event) => start(event, work)"
-                      >
-                        <span class="glyphicon glyphicon-play" style="color:indianred"></span>
-                      </button>
-                      <button
-                        v-else
-                        type="button"
-                        class="btn btn-link"
-                        @click.stop="(event) => end(event, work)"
-                      >
-                        <span class="glyphicon glyphicon-pause" style="color:green"></span>
-                      </button>
-                      <br />
-                    </div>
-                    <span>
-                      <button
-                        class="btn btn-link delete-btn"
-                        type="button"
-                        @click.stop="(event) => deleteItem(event,work)"
-                      >
-                        <span
-                          class="glyphicon glyphicon-trash"
-                          style="color:indianred"
-                          aria-hidden="true"
-                        ></span>
-                      </button>
-                    </span>
+                   <div class="btn-group" role="group" aria-label="...">
+                    <button
+                      v-if="work.start == null"
+                      type="button"
+                      class="btn btn-link"
+                      @click.stop="(event) => start(event, work)"
+                    >
+                      <span class="glyphicon glyphicon-play" style="color:indianred"></span>
+                    </button>
+                    <button
+                      v-else
+                      type="button"
+                      class="btn btn-link"
+                      @click.stop="(event) => end(event, work)"
+                    >
+                      <span class="glyphicon glyphicon-pause" style="color:green"></span>
+                    </button> 
+                    <br />
                   </div>
-                </td>
+                 <span>
+                  <button
+                    class="btn btn-link delete-btn"
+                    type="button"
+                    @click.stop="(event) => deleteItem(event,work)"
+                  > 
+                    <span
+                      class="glyphicon glyphicon-trash"
+                      style="color:indianred"
+                      aria-hidden="true"
+                    ></span>
+                  </button> 
+                  </span>
+                    </div> 
+                    </td>
               </tr>
             </tbody>
           </table>
           <br />
           <div class="form-group">
-            <label for="exampleFormControlTextarea3">
-              یاداشت
+            <label for="exampleFormControlTextarea3">  
+              یاداشت 
               <span style="color:gray" class="glyphicon glyphicon-comment"></span>
             </label>
-
+            
             <textarea
               class="form-control"
               id="exampleFormControlTextarea3"
               rows="1"
               v-model="myynote"
             ></textarea>
-
+            
             <button style="color:indianred" class="btn btn-link pull-left" @click="addMyNote">
-              <span class="glyphicon glyphicon-plus"></span>
-            </button>
+              <span  class="glyphicon glyphicon-plus"></span></button>
           </div>
         </div>
       </div>
@@ -178,10 +172,10 @@ export default {
     // }, 1000);
     // this.screenTime();
     this.oldTime = new Date();
-    setInterval(() => {
-      this.ago = moment(this.oldTime).fromNow();
-    }, 1000);
-  },
+            setInterval(() => {
+                this.ago = moment(this.oldTime).fromNow();
+            }, 1000);
+        },
 
   data() {
     return {
@@ -194,7 +188,6 @@ export default {
       elapsedTime: 0,
       elapsedTimeNow: 0,
       timer: undefined,
-
       timers: [],
     };
   },
@@ -214,9 +207,10 @@ export default {
 
           var diff = x - w.start;
           w.elapsedTime = w.runtime + diff;
-
+         
           this.timers[w.id] = setInterval(() => {
             w.elapsedTime += 1000;
+           
           }, 1000);
         }
         return w;
@@ -232,14 +226,14 @@ export default {
       "update",
       "addNote",
       "updateNote",
-      "screenTime",
+      "screenTime"
     ]),
 
     start(event, work) {
       work.startCounter++;
       work.start = new Date();
       this.timers[work.id] = setInterval(() => {
-        work.elapsedTime += 1000;
+        work.elapsedTime += 1000;       
       }, 1000);
       this.update(work);
     },
@@ -255,11 +249,13 @@ export default {
       this.addWork({
         work: this.mywork,
         runtime: 0,
+
         start: null,
         done: false,
         elapsedTime: 0,
         startCounter: 0,
-        time: 0,
+        modal: false,
+        //  
       });
       this.mywork = "";
     },

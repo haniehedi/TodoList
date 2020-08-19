@@ -23,14 +23,24 @@
         <button  class="btn btn-link glyphicon glyphicon-share-alt pull-left" @click.stop="(event) => didntDone(event, work)" 
             style="color:rgb(173, 84, 84)">
         </button>
-        <button  class="btn btn-link glyphicon glyphicon-modal-window pull-left" :mywork="work.work"
-             data-toggle="modal" data-target="#me" style="color:rgb(173, 84, 84)">
-        </button>                                
-      </td>              
+        <button  class="btn btn-link glyphicon glyphicon-modal-window pull-left"  
+             data-toggle="modal"  @click="work.modal = true"  data-target="#me" style="color:rgb(173, 84, 84)">
+        </button>      
+        
+                             
+      </td>    
+                
         </tr>               
   </tbody>
+      
 </table>
+      </div>
+    </div>
+    <div v-for="work in dones" :key="work">
+      <worksHistory v-if="work.modal" :mywork="work" ></worksHistory> 
+    </div>
 
+</div>
 
     
 </template>
@@ -38,15 +48,17 @@
 <script>
   import {mapActions,mapGetters} from 'vuex';
   import LogedInHeader from "../struct/logedInHeader";
+  import worksHistory from "./worksHistory";
   // import LogedInFooter from "../struct/logedInFooter";
 
   export default {
     name: "Dones",
-    components: {LogedInHeader},
+    components: {LogedInHeader,  worksHistory},
     data(){
       return{
         mywork:'',
         mymodal:'',
+        haniehanie:'haniehanie'
       }
     },
     computed:{
@@ -59,8 +71,9 @@
         this.tasks({})
       },
       addMyModal(event, work){
-          // work.modal= true
-          this.addModal(work);
+          work.modal= true
+          // this.mymodal= work;
+          // state.modal = state.modal.concat(modal)
       }, 
           // endModal(event, work){
           //   work.modal= false

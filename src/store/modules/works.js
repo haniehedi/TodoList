@@ -38,10 +38,10 @@ const mutations = {
         state.notes.filter(x => x.done);
 
     },
-    ['UPDATE_NOTE']: (state, payload) => {
-        return state.myynote = payload
-        //console.log(myynote)
-    },
+    // ['UPDATE_NOTE']: (state, payload) => {
+    //     return state.myynote = payload
+    //     //console.log(myynote)
+    // },
     ['DELETE_NOTE']: (state, note) => {
         state.notes = state.notes
             .filter(n => n.id !== note.id)
@@ -55,20 +55,14 @@ const mutations = {
             state.notes = state.notes.concat(noteWithId)
        }
     },
-    ['SCREEN_TIME']: (state) =>{
-        // state.ago = moment(this.oldTime).fromNow();
-        state.oldTime = new Date();
-            setInterval(() => {
-                state.ago = moment(this.oldTime).fromNow();
-            }, 1000);
-        },
-    ['ADD_MODAL']: (state, modal) =>{
-        state.modal='';
-        // if(note.note){
-         state.modal = state.modal.concat(modal)
-       }
-    // }
-}
+    // ['SCREEN_TIME']: (state) =>{
+    //     // state.ago = moment(this.oldTime).fromNow();
+    //     state.oldTime = new Date();
+    //         setInterval(() => {
+    //             state.ago = moment(this.oldTime).fromNow();
+    //         }, 1000);
+    //     },  
+ }
 const actions = {
     addWork: ({ commit }, work) => {
         commit('ADD_WORK', work)
@@ -92,15 +86,13 @@ const actions = {
     addNote: ({ commit }, note) => {
         commit('ADD_NOTE', note)
     },
-    updateNote: ({ commit }, note) => {
-        commit('UPDATE_NOTE', note)
-    }, 
-    screenTime: ({ commit }) => {
-        commit('SCREEN_TIME')
-    },
-    addModal: ({ commit }, work) => {
-        commit('ADD_MODAL', work)
-    }, 
+    // updateNote: ({ commit }, note) => {
+    //     commit('UPDATE_NOTE', note)
+    // }, 
+    // screenTime: ({ commit }) => {
+    //     commit('SCREEN_TIME')
+    // },
+   
 }
 
 const getters = {
@@ -108,9 +100,9 @@ const getters = {
         const comparer = (a, b) => b.id - a.id
         return state.works.filter(x => !x.done).sort(comparer);
     },
-    ago(state) {
-        return state.ago;
-    },
+    // ago(state) {
+    //     return state.ago;
+    // },
     dones(state) {
         return state.works.filter(x => x.done);
     },
