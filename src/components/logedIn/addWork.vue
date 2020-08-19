@@ -82,7 +82,7 @@
                 </td>
 
                 <td></td>
-                <td>
+                <td v-if="work && work.elapsedTime">
                   <big
                     v-if="(work.elapsedTime - work.runtime) >=0"
                   >{{ (new Date(work.elapsedTime - work.runtime)).toUTCString().match(/(\d\d:\d\d:\d\d)/)[0]}}</big>
@@ -92,6 +92,7 @@
                   <br />
                   <small>{{ (new Date(work.elapsedTime)).toUTCString().match(/(\d\d:\d\d:\d\d)/)[0]}}</small>
                 </td>
+                <td v-else></td>
                 <td>
                   <div class="pull-left">
                     <div class="btn-group" role="group" aria-label="...">
@@ -198,7 +199,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["works", "currentUser", "ago"]),
+    ...mapGetters(["works", "currentUser"]),
 
     formattedWorks() {
       const x = new Date();
