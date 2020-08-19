@@ -1,11 +1,11 @@
 <template>
     <div>
-<!--        <Header></Header>-->
+      <mainHeader></mainHeader>
         <div class="container" dir="rtl" >
             <div class="col-md-6 col-md-offset-3">
                 <div class="form-group">
-<!--                    <br><br><br>-->
-                    <h5>صفحه ی اصلی </h5>
+                   <br><br><br>
+                    <h3 >صفحه ی اصلی </h3>
 <!--                    <router-link to="mypage"><a>صفحه ی من </a></router-link>-->
 <!--                    <Footer></Footer>-->
                 </div>
@@ -13,15 +13,14 @@
         </div>
     </div>
 </template>
-
 <script>
-    // import Header from "./struct/Header";
-    // import Footer from "./struct/Footer";
+   import mainHeader from '../struct/mainHeader'
     export default {
         name: "Home",
-
-        // components: {Footer, Header},
-
+        components:{mainHeader},
+        created(){
+            this.$$store.dispatch('destroyToken')
+        }
     }
 </script>
 

@@ -1,65 +1,87 @@
 <template>
   <div class="container" dir="rtl">
-    <loged-in-header></loged-in-header>
-    <div class="col-md-6 col-md-offset-3">
+    <loged-in-header></loged-in-header>' 
+    <div class="col-md-8  col-md-offset-2"> 
       <div class="form-group">
-
-        <h3>لیست کارهای انجام شده  </h3>
-        <hr>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item" v-for="(work,i) in dones" :key="work"  >
-            <div class="input-group input-group-sm">
-              <span class="input-group-addon" id="sizing-addon1"> {{i+1}} </span>
-              <div type="text" class="form-control" aria-describedby="sizing-addon1" >
-                {{work.work}}
-              </div>
-            </div>
-            <button class="btn btn-group-sm"  @click.stop="(event) => didntDone(event, work)">
-              <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
-            </button>
-
-          </li>
-        </ul>
-        <hr>
         <br><br><br>
-      </div>
-    </div>
-    <loged-in-footer></loged-in-footer>
-  </div>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th style="color:rgb(173, 84, 84)" >کار های انجام شده</th>
+        <th></th><th></th>               
+    </tr>
+  </thead>
+  <tbody v-for="(work,i) in dones" :key="work">
+    <tr>
+      <td colspan="12">
+        <span class="badge pull-right" style="background-color:rgb(173, 84, 84)" >{{i+1}}  </span>
+          <p style="margin-right:2.5em" :mymodal="work.work" > 
+            {{work.work}}
+          </p>
+      </td>               
+      <td>
+        <button  class="btn btn-link glyphicon glyphicon-share-alt pull-left" @click.stop="(event) => didntDone(event, work)" 
+            style="color:rgb(173, 84, 84)">
+        </button>
+        <button  class="btn btn-link glyphicon glyphicon-modal-window pull-left" :mywork="work.work"
+             data-toggle="modal" data-target="#me" style="color:rgb(173, 84, 84)">
+        </button>                                
+      </td>              
+        </tr>               
+  </tbody>
+</table>
+
+
+    
 </template>
 
 <script>
   import {mapActions,mapGetters} from 'vuex';
   import LogedInHeader from "../struct/logedInHeader";
-  import LogedInFooter from "../struct/logedInFooter";
+  // import LogedInFooter from "../struct/logedInFooter";
 
   export default {
     name: "Dones",
-    components: {LogedInFooter, LogedInHeader},
+    components: {LogedInHeader},
     data(){
       return{
-        mywork:''
+        mywork:'',
+        mymodal:'',
       }
     },
     computed:{
-      ...mapGetters(['works','dones'])
+      ...mapGetters(['works','dones', 'modal'])
     },
     methods: {
-      ...mapActions([
-        'tasks',
-      ]),
+      ...mapActions(['tasks', 'addModal' ]),
       didntDone(event, work){
         work.done= !work.done;
         this.tasks({})
       },
-
+      addMyModal(event, work){
+          // work.modal= true
+          this.addModal(work);
+      }, 
+          // endModal(event, work){
+          //   work.modal= false
+          // }
     }
   }
 
 </script>
 
 <style scoped>
+.left {
+  float: left;
+  
+  
+}
+.right{
+  float: right;
+}
+
   .active {
-    color: #578b22;
+    color: #365c11;
+    color:rgb(173, 84, 84)
   }
 </style>

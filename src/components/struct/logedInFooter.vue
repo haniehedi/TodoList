@@ -1,17 +1,13 @@
 <template>
-    <div>
+
+    <div align="center">
+        <br><br>
         <hr>
-        <nav aria-label="...">
-            <ul class="pager">
-                <li><a href="#">
-                    <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
-                    صفحه ی بعد
-                </a></li>
-                <li><a href="#">صفحه ی قبل
-                    <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
-                </a></li>
-            </ul>
-        </nav>
+        <small > کلیه حقوق مادی و معنوی این سایت برای شرکت نیکان محفوظ است  </small>
+        <span class="glyphicon glyphicon-copyright-mark"></span> <br>
+        <small > تماس با ما   </small>
+        <span class="glyphicon glyphicon-phone-alt"></span>
+       
     </div>
 </template>
 
@@ -22,5 +18,6 @@
 </script>
 
 <style scoped>
+
 
 </style>
